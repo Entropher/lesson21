@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 21</title>
+    <link rel="stylesheet" href="src/css/styles.css" />
+    <script src="src/js/app.js" defer></script>
+  </head>
+  <body>
+    <section class="container">
+      <form id="signup-form" action="#" class="form" novalidate>
+        <h1>Form title</h1>
+        <div class="form-group">
+          <label for="user-name">user name</label>
+          <input
+            type="text"
+            id="user-name"
+            required
+            minlength="5"
+            name="username"
+          />
+          <span class="message"></span>
+        </div>
+        <div class="form-group">
+          <label for="user-email">user email</label>
+          <input type="email" id="user-email" required name="email" />
+          <span class="message"></span>
+        </div>
+        <div class="form-group">
+          <label for="user-age">user age</label>
+          <input
+            type="number"
+            id="user-age"
+            min="10"
+            max="50"
+            required
+            name="age"
+          />
+          <span class="message"></span>
+        </div>
+
+        <button type="submit">submit</button>
+      </form>
+    </section>
+
+    <dialog>
+      <div class="dialog-content">
+        <h2>title</h2>
+        <p>message</p>
+        <button class="close">Close</button>
+      </div>
+    </dialog>
+  </body>
+</html>

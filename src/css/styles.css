@@ -1,0 +1,70 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.form {
+  max-width: 500px;
+  margin: 100px auto;
+  border: 1px solid;
+  border-radius: 16px;
+  padding: 20px;
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    label {
+    }
+    input {
+      padding: 5px;
+    }
+    .message {
+    }
+
+    &.error {
+      input {
+        border: 2px solid red;
+      }
+      .message {
+        color: red;
+      }
+    }
+  }
+}
+
+button {
+  padding: 5px;
+  margin-left: auto;
+  margin-top: 20px;
+  display: block;
+}
+dialog {
+  &[open] {
+    min-width: 200px;
+    max-width: 500px;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .dialog-content {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+.hidden {
+  display: none;
+}
