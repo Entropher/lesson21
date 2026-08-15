@@ -3,6 +3,9 @@ const form = document.getElementById("signup-form"),
   userName = document.getElementById("user-name"),
   userEmail = document.getElementById("user-email"),
   userAge = document.getElementById("user-age");
+const personalNumber = document.getElementById("personal-number"),
+  mobileNumber = document.getElementById("mobile-number"),
+  jobDescription = document.getElementById("job-description");
 
 const dialog = document.querySelector("dialog"),
   closeDialog = dialog.querySelector(".close");
@@ -12,8 +15,6 @@ closeDialog.addEventListener("click", () => {
 
   dialog.querySelector("h2").innerText = "";
   dialog.querySelector("p").innerText = "";
-
-  window.location.href = "profile.html";
 });
 
 function showDialog(title, description) {
@@ -35,7 +36,6 @@ function showError(inputEl, message) {
 
 function checkUserNameValidity() {
   if (userName.validity.valueMissing) {
-    // userName.value === ''
     showError(userName, "user name is required");
     return false;
   } else if (userName.validity.tooShort || userName.validity.tooLong) {
@@ -61,33 +61,71 @@ function checkUserAgeValidity() {
   }
 }
 
+function checkPersonalNumberValidity() {
+  const val = personalNumber.value.trim();
+  if (personalNumber.validity.valueMissing) {
+    showError(personalNumber, "personal number is required");
+    return false;
+  } else if (!/^\d{11}$/.test(val)) {
+    showError(personalNumber, "personal number must be exactly 11 digits");
+    return false;
+  } else {
+    removeError(personalNumber);
+    return true;
+  }
+}
+
+function checkMobileNumberValidity() {
+  const val = mobileNumber.value.trim();
+  if (mobileNumber.validity.valueMissing) {
+    showError(mobileNumber, "mobile number is required");
+    return false;
+  } else if (!/^\d{9}$/.test(val)) {
+    showError(mobileNumber, "mobile number must be exactly 9 digits");
+    return false;
+  } else {
+    removeError(mobileNumber);
+    return true;
+  }
+}
+
+function checkJobDescriptionValidity() {
+  const val = jobDescription.value;
+  if (!val) {
+    removeError(jobDescription);
+    return true;
+  } else if (val.length > 50) {
+    showError(jobDescription, "job description must be 50 characters or less");
+    return false;
+  } else {
+    removeError(jobDescription);
+    return true;
+  }
+}
+
 userName.addEventListener("input", checkUserNameValidity);
 userAge.addEventListener("input", checkUserAgeValidity);
+personalNumber.addEventListener("input", checkPersonalNumberValidity);
+mobileNumber.addEventListener("input", checkMobileNumberValidity);
+jobDescription.addEventListener("input", checkJobDescriptionValidity);
 
 // form events -> submit, input, change
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const isUserNameValid = checkUserNameValidity();
   const isUserAgeValid = checkUserAgeValidity();
+  const isPersonalValid = checkPersonalNumberValidity();
+  const isMobileValid = checkMobileNumberValidity();
+  const isJobValid = checkJobDescriptionValidity();
 
-  if (isUserAgeValid && isUserNameValid) {
-    // console.log("after check");
-    // form.submit()
-    // form.reset()
-
-    const userInfo = {
-      name: userName.value,
-      age: userAge.value,
-      email: userEmail.value,
-    };
-
-    localStorage.setItem("user", JSON.stringify(userInfo));
-
+  if (
+    isUserAgeValid &&
+    isUserNameValid &&
+    isPersonalValid &&
+    isMobileValid &&
+    isJobValid
+  ) {
     form.reset();
     showDialog("sign up", "user registered successfuly");
   }
 });
-
-// dialogs
-
-// localStorage

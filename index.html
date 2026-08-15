@@ -40,6 +40,47 @@
           <span class="message"></span>
         </div>
 
+        <div class="form-group">
+          <label for="personal-number">personal number</label>
+          <input
+            type="text"
+            id="personal-number"
+            name="personal_number"
+            inputmode="numeric"
+            required
+            pattern="\d{11}"
+            minlength="11"
+            maxlength="11"
+          />
+          <span class="message"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="mobile-number">mobile number</label>
+          <input
+            type="text"
+            id="mobile-number"
+            name="mobile_number"
+            inputmode="numeric"
+            required
+            pattern="\d{9}"
+            minlength="9"
+            maxlength="9"
+          />
+          <span class="message"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="job-description">job description</label>
+          <input
+            type="text"
+            id="job-description"
+            name="job_description"
+            maxlength="50"
+          />
+          <span class="message"></span>
+        </div>
+
         <button type="submit">submit</button>
       </form>
     </section>
