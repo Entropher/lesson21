@@ -2,8 +2,8 @@
 const form = document.getElementById("signup-form"),
   userName = document.getElementById("user-name"),
   userEmail = document.getElementById("user-email"),
-  userAge = document.getElementById("user-age");
-const personalNumber = document.getElementById("personal-number"),
+  userAge = document.getElementById("user-age"),
+  personalNumber = document.getElementById("personal-number"),
   mobileNumber = document.getElementById("mobile-number"),
   jobDescription = document.getElementById("job-description");
 
